@@ -1,9 +1,8 @@
 {
   "name": "resume-react",
   "version": "0.1.0",
-  "homepage": "http://top18969.github.io/reactresume",
+  "homepage": "http://nanpipat.github.io/",
   "private": true,
-  "proxy": "https://accessdev.scg.co.th",
   "dependencies": {
     "axios": "^0.19.2",
     "bootstrap": "^4.3.1",

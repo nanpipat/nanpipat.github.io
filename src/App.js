@@ -107,7 +107,7 @@ class App extends Component {
               </li>
 
               <li className="nav-item">
-                <Link activeClass="active" style={{ cursor: "pointer" }} className="nav-link js-scroll-trigger" to="awards" spy={true} smooth={true} duration={500} >WORKS</Link>
+                <Link activeClass="active" style={{ cursor: "pointer" }} className="nav-link js-scroll-trigger" to="awards" spy={true} smooth={true} duration={500} >Projects</Link>
 
               </li>
               <li className="nav-item">
@@ -358,17 +358,9 @@ class App extends Component {
 
           <section className="resume-section p-3 p-lg-5 d-flex align-items-center" id="awards">
             <div className="w-100">
-              <h2 className="mb-5">WORKS</h2>
+              <h2 className="mb-5">PROJECTS</h2>
               <div className="row">
                 <CardColumns>
-                  <CardCom
-                    imgurl={"https://img.caixin.com/2019-12-12/1576147635453631.jpg"}
-                    title="Git Hub"
-                    subtitle=" "
-                    text="all my freetimes projects."
-                    Link1D="Go to GH Profile"
-                    Link1="https://github.com/top18969"
-                  />
                   <CardCom
                     imgurl={"https://bgstrategicadvisors.com/wp-content/uploads/2019/09/medium.png"}
                     title="Medium"
@@ -377,6 +369,47 @@ class App extends Component {
                     Link1D="Go to My Blog"
                     Link1="https://medium.com/@nanpipat.k"
                   />
+                  <CardCom
+                    imgurl={"https://firebase.google.com/images/social.png"}
+                    title="Firebase Login"
+                    subtitle=" "
+                    text="Loin page example on with firebase."
+                    Link1D="Demo"
+                    Link1="https://nanpipat.github.io/Firebase_Loginapp/"
+                    Link2D="Code"
+                    Link2="https://github.com/nanpipat/Firebase_Loginapp"
+                  />
+                  <CardCom
+                    imgurl={"https://cerberus-laboratories.com/images/blog/random_numbers.jpg"}
+                    title="Random Number"
+                    subtitle=" "
+                    text="Random Number application on react."
+                    Link1D="Demo"
+                    Link1="https://nanpipat.github.io/ReactApp_NumberRandom/"
+                    Link2D="Code"
+                    Link2="https://github.com/nanpipat/ReactApp_NumberRandom"
+                  />
+                  <CardCom
+                    imgurl={"https://code.recuweb.com/c/u/3a09f4cf991c32bd735fa06db67889e5/2018/08/wordpress-photo-gallery-plugins1.png"}
+                    title="Images Gallery"
+                    subtitle=" "
+                    text="Images Gallery application on react."
+                    Link1D="Demo"
+                    Link1="https://nanpipat.github.io/ReactApp_ImgGallery/"
+                    Link2D="Code"
+                    Link2="https://github.com/nanpipat/ReactApp_ImgGallery"
+                  />
+                  <CardCom
+                    imgurl={"https://cdn.tutsplus.com/active/uploads/legacy/tuts/008_colorPicker/Tutorial/8.jpg"}
+                    title="Color Picker"
+                    subtitle=" "
+                    text="Color Picker on react."
+                    Link1D="Demo"
+                    Link1="https://nanpipat.github.io/ReactApp_ColorPicker/"
+                    Link2D="Code"
+                    Link2="https://github.com/nanpipat/ReactApp_ColorPicker"
+                  />
+                  
                   {/* <CardCom
                     imgurl= {reim}
                     title="Card title3"
