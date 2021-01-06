@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/static/css/main.1c9e227e.chunk.css",
-    "main.js": "/static/js/main.dc5e8688.chunk.js",
-    "main.js.map": "/static/js/main.dc5e8688.chunk.js.map",
+    "main.js": "/static/js/main.8c030721.chunk.js",
+    "main.js.map": "/static/js/main.8c030721.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.4d5992b6.js",
     "runtime-main.js.map": "/static/js/runtime-main.4d5992b6.js.map",
     "static/js/2.ee821a55.chunk.js": "/static/js/2.ee821a55.chunk.js",
     "static/js/2.ee821a55.chunk.js.map": "/static/js/2.ee821a55.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.daff5ac3e0d212a2d3110d9c3c1934ac.js": "/precache-manifest.daff5ac3e0d212a2d3110d9c3c1934ac.js",
+    "precache-manifest.fbd23e78a6033fe685b1597e0a496007.js": "/precache-manifest.fbd23e78a6033fe685b1597e0a496007.js",
     "service-worker.js": "/service-worker.js",
     "static/css/main.1c9e227e.chunk.css.map": "/static/css/main.1c9e227e.chunk.css.map",
     "static/media/avartar2.jpg": "/static/media/avartar2.fac13b9a.jpg",
@@ -24,6 +24,6 @@
     "static/js/runtime-main.4d5992b6.js",
     "static/js/2.ee821a55.chunk.js",
     "static/css/main.1c9e227e.chunk.css",
-    "static/js/main.dc5e8688.chunk.js"
+    "static/js/main.8c030721.chunk.js"
   ]
 }
