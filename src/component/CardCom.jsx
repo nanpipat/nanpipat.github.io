@@ -22,8 +22,8 @@ class CardCom extends Component {
                     <CardTitle style={{ fontSize: "25px" }}>{this.props.title}</CardTitle>
                     <CardSubtitle>{this.props.subtitle}</CardSubtitle>
                     <CardText>{this.props.text}</CardText>
-                    <CardLink style={{ color: "#779ECB" }} href={this.props.Link1}>{this.props.Link1D}</CardLink>
-                    <CardLink style={{ color: "#779ECB" }} href={this.props.Link2}>{this.props.Link2D}</CardLink>
+                    <CardLink style={{ color: "#97e8cf" }} href={this.props.Link1} target="_blank">{this.props.Link1D}</CardLink>
+                    <CardLink style={{ color: "#97e8cf" }} href={this.props.Link2} target="_blank">{this.props.Link2D}</CardLink>
                 </CardBody>
             </Card>
 

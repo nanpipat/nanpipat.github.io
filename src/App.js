@@ -10,6 +10,7 @@ import CardSkill from './component/CardSkill.jsx';
 import './App.css';
 import reim from './assets/img/react-cover.png';
 import axios from 'axios';
+import ReactTypingEffect from 'react-typing-effect';
 
 
 class App extends Component {
@@ -77,11 +78,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <nav className="navbar navbar-expand-lg navbar-dark fixed-top" style={{ backgroundColor: "#70A1D7" }} id="sideNav">
+        <nav className="navbar navbar-expand-lg navbar-dark fixed-top" style={{ backgroundColor: "#35659c" }} id="sideNav">
           <a className="navbar-brand js-scroll-trigger" onClick={() => this.scrollToLanding('about')}>
             <span style={{ color: "white", fontWeight: 800, letterSpacing: ".05rem", textTransform: "uppercase" }} className="d-block d-lg-none">Nanpipat Klinpratoom</span>
             <span className="d-none d-lg-block">
-              <img className="img-fluid img-profile rounded-circle mx-auto mb-2" src={require('./assets/img/avatar.jpg')} alt="" />
+              <img className="img-fluid img-profile rounded-circle mx-auto mb-2" src={require('./assets/img/avartar2.jpg')} alt="" />
             </span>
           </a>
           <button className="navbar-toggler" type="button" data-toggle="collapse" onClick={this.handleClick} data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -97,10 +98,10 @@ class App extends Component {
                 <Link activeClass="active" style={{ cursor: "pointer" }} className="nav-link js-scroll-trigger" to="experience" spy={true} smooth={true} duration={500} >Experience</Link>
 
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link activeClass="active" style={{ cursor: "pointer" }} className="nav-link js-scroll-trigger" to="education" spy={true} smooth={true} duration={500} >Education</Link>
 
-              </li>
+              </li> */}
               <li className="nav-item">
                 <Link activeClass="active" style={{ cursor: "pointer" }} className="nav-link js-scroll-trigger" to="skills" spy={true} smooth={true} duration={500} >Skills</Link>
 
@@ -122,27 +123,50 @@ class App extends Component {
 
           <section className="resume-section p-3 p-lg-5 d-flex align-items-center" id="about">
             <div className="w-100">
-              <h1 className="mb-0">Nanpipat
+              <ReactTypingEffect
+                text={"NANPIPAT KLINPRATOOM"}
+                cursorRenderer={cursor => <h1>{cursor}</h1>}
+                speed={150}
+                eraseSpeed={50}
+                eraseDelay={10000}
+                typingDelay={500}
+                className={"topland"}
+                displayTextRenderer={(text, i) => {
+                  return (
+                    <h1 className="mb-0">
+                      {text.split('').map((char, i) => {
+                        const key = `${i}`;
+                        return (
+                          <span
+                            key={key}
+                            style={i > 8 ? { color: '#35659c' } : {}}
+                          >{char}</span>
+                        );
+                      })}
+                    </h1>
+                  );
+                }}
+              />
+              {/* <h1 className="mb-0">Nanpipat
               <span className="text-primary">  </span>
-                <span style={{ color: "#70A1D7" }}>Klinpratoom</span>
-              </h1>
+                <span style={{ color: "#35659c" }}>Klinpratoom</span>
+              </h1> */}
               <div className="subheading mb-5">
                 <h3>Full Stack Developer</h3>
-                {/* Samutprakarn · Thailand · (085) 845-5652 · 
-            <a href="mailto:nanpipat.k@gmail.com"> nanpipat.k@gmail.com</a> */}
               </div>
-              <p className="lead mb-5">Please call me "TOP". I'm a funny guy and love to do activity , got a leadership , serious when worker. I like to think of something new because it's unique. I always enjoy with problem and never give up until I can fix it.</p>
+
+              <p className="lead mb-5">Full Stack Developer with 3 years in front-end , back-end , system , dev-ops , debugging and user interfaces within various language and framework. Proven ability with web developer that high performance.</p>
               <div className="social-icons">
-                <a href="https://facebook.com/top18969" target="_blank">
-                  <i className="fa fa-facebook-f"></i>
+                <a href="https://www.linkedin.com/in/nanpipat-klinpratoom-b859361bb/" target="_blank">
+                  <i className="fab fa-linkedin-in"></i>
                 </a>
-                <a href="https://github.com/top18969" target="_blank">
+                <a href="https://github.com/nanpipat" target="_blank">
                   <i className="fa fa-github"></i>
                 </a>
-                <a href="#">
-                  <i className="fa fa-twitter"></i>
+                <a href="https://medium.com/@nanpipat.k" target="_blank">
+                  <i class="fab fa-medium"></i>
                 </a>
-                <a href="mailto:nanpipat.k@gmail.com">
+                <a href="mailto:nanpipat.k@gmail.com" target="_blank">
                   <i className="fa fa-envelope"></i>
                 </a>
 
@@ -167,7 +191,7 @@ class App extends Component {
                   <p>Develop software, such as website, application, system, etc. Base language  in Back End is C#,.NET Core, .NET Framework and Base Front End is Angular Framework.</p>
                 </div>
                 <div className="resume-date text-md-right">
-                  <span style={{ color: "#70A1D7" }}>June 2018 - Present</span>
+                  <span style={{ color: "#97e8cf" }}>June 2018 - Present</span>
                 </div>
               </div>
 
@@ -178,7 +202,7 @@ class App extends Component {
                   <p>Develop and Bug fixed Software , Application or Website by requirement. Don't expect language. Mostly is Web Developer </p>
                 </div>
                 <div className="resume-date text-md-right">
-                  <span style={{ color: "#70A1D7" }}>January 2019 - Present</span>
+                  <span style={{ color: "#97e8cf" }}>March 2018 - Present</span>
                 </div>
               </div>
 
@@ -188,7 +212,7 @@ class App extends Component {
 
           <hr className="m-0" />
 
-          <section className="resume-section p-3 p-lg-5 d-flex align-items-center" id="education">
+          {/* <section className="resume-section p-3 p-lg-5 d-flex align-items-center" id="education">
             <div className="w-100">
               <h2 className="mb-5">Education</h2>
 
@@ -199,7 +223,7 @@ class App extends Component {
                   <div>Computer For Communication</div>
                 </div>
                 <div className="resume-date text-md-right">
-                  <span style={{ color: "#70A1D7" }}>August 2014 - May 2018</span>
+                  <span style={{ color: "#97e8cf" }}>August 2014 - May 2018</span>
                 </div>
               </div>
 
@@ -209,14 +233,14 @@ class App extends Component {
                   <div className="subheading mb-3">Eng - Math Program</div>
                 </div>
                 <div className="resume-date text-md-right">
-                  <span style={{ color: "#70A1D7" }}>May 2008 - Feb 2013</span>
+                  <span style={{ color: "#97e8cf" }}>May 2008 - Feb 2013</span>
                 </div>
               </div>
 
             </div>
           </section>
 
-          <hr className="m-0" />
+          <hr className="m-0" /> */}
 
           <section className="resume-section p-3 p-lg-5 d-flex align-items-center" id="skills">
             <div className="w-100">
@@ -238,7 +262,7 @@ class App extends Component {
                   <div className="subheading mt-3"><img className="mr-3" style={{ borderRadius: "50%", width: "70px" }} src="https://opencollective-production.s3.us-west-1.amazonaws.com/ada636e0-395b-11ea-8ab7-b3f0317bbc7c.png" alt="" />Material ui</div>
                   <p>High Level. It's very compatible with Angular and there are many plug-ins available. </p>
                 </div>
-                
+
               </div>
 
               <div className="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
@@ -292,6 +316,8 @@ class App extends Component {
               <div className="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
                 <div className="resume-content">
                   <h3 className="mb-0">DEV-OPS  </h3>
+                  <div className="subheading mt-3"><img className="mr-3" style={{ borderRadius: "50%", width: "70px" }} src="https://miro.medium.com/max/336/1*glD7bNJG3SlO0_xNmSGPcQ.png" alt="" />Docker</div>
+                  <p>Middle Level. I use for deploy project to cloud.</p>
                   <div className="subheading mt-3"><img className="mr-3" style={{ borderRadius: "50%", width: "70px" }} src="https://img2.thaipng.com/20180515/zxe/kisspng-jenkins-docker-continuous-delivery-installation-so-5afa799e222331.1197773615263645741398.jpg" alt="" />Jenkins</div>
                   <p>Basic Level. I use to write pipeline for pre-deploy my application.</p>
                   <div className="subheading mt-3"><img className="mr-3" style={{ borderRadius: "50%", width: "70px" }} src="https://pbs.twimg.com/profile_images/378800000036582527/5aa73901ac270ac6e8776241b04ad3d9_400x400.png" alt="" />Octopus Deploy</div>
@@ -369,11 +395,64 @@ class App extends Component {
                     Link1D="Go to My Blog"
                     Link1="https://medium.com/@nanpipat.k"
                   />
+
+                  <CardCom
+                    imgurl={"https://miro.medium.com/max/1024/1*TaV-QaLWD_aScEPrgLKZfA.png"}
+                    title="React on Heroku"
+                    subtitle=" "
+                    text="Config and Setting of ReactJs for deploy to Heroku"
+                    Link1D="Demo"
+                    Link1="https://nanpipat-react-deploy.herokuapp.com/"
+                    Link2D="Code"
+                    Link2="https://github.com/nanpipat/heroku_react_deploy"
+                  />
+                  <CardCom
+                    imgurl={"https://i.ytimg.com/vi/zXx2oBrxN9E/maxresdefault.jpg"}
+                    title="Angular OAuth2"
+                    subtitle=" "
+                    text="Setting and config for OAuth2 Angular Project"
+                    Link1D="Demo"
+                    Link1="https://nanpipat-angular-oauth2-demo.herokuapp.com/home"
+                    Link2D="Code"
+                    Link2="https://github.com/nanpipat/angular-oauth2-demo"
+                  />
+                  <CardCom
+                    imgurl={"https://neilpatel.com/wp-content/uploads/2018/10/blog.jpg"}
+                    title="Blog Page with NextJS"
+                    subtitle=" "
+                    text="Build Blog by NextJS"
+                    Link1D="Demo"
+                    Link1="https://nanpipat-blogger.herokuapp.com/"
+                    Link2D="Code"
+                    Link2="https://github.com/nanpipat/nextjsbuildblog"
+                  />
+
+                  <CardCom
+                    imgurl={"https://miro.medium.com/max/2400/1*jNM11lWgQid_djzb3668UQ.png"}
+                    title="Angular on Heroku"
+                    subtitle=" "
+                    text="Config and Setting of Angular for deploy to Heroku"
+                    Link1D="Demo"
+                    Link1="https://nanpipat-angular-deploy.herokuapp.com/"
+                    Link2D="Code"
+                    Link2="https://github.com/nanpipat/heroku_angular_deploy"
+                  />
+                  <CardCom
+                    imgurl={"https://miro.medium.com/max/1200/1*SrUAbDM2x3CJjWi4FQBE2w.png"}
+                    title="Nextjs on Heroku"
+                    subtitle=" "
+                    text="Config and Setting of NextJs for deploy to Heroku"
+                    Link1D="Demo"
+                    Link1="https://nanpipat-nextjs-deploy.herokuapp.com/"
+                    Link2D="Code"
+                    Link2="https://github.com/nanpipat/heroku_nextjs_deploy"
+                  />
+
                   <CardCom
                     imgurl={"https://firebase.google.com/images/social.png"}
                     title="Firebase Login"
                     subtitle=" "
-                    text="Loin page example on with firebase."
+                    text="Login page example on with firebase."
                     Link1D="Demo"
                     Link1="https://nanpipat.github.io/Firebase_Loginapp/"
                     Link2D="Code"
@@ -409,7 +488,7 @@ class App extends Component {
                     Link2D="Code"
                     Link2="https://github.com/nanpipat/ReactApp_ColorPicker"
                   />
-                  
+
                   {/* <CardCom
                     imgurl= {reim}
                     title="Card title3"
