@@ -11,6 +11,7 @@ import './App.css';
 import reim from './assets/img/react-cover.png';
 import axios from 'axios';
 import ReactTypingEffect from 'react-typing-effect';
+import { data } from 'jquery';
 
 
 class App extends Component {
@@ -19,7 +20,8 @@ class App extends Component {
     super(props);
     this.state = {
       activeTab: true,
-      clname: "collapse navbar-collapse"
+      clname: "collapse navbar-collapse",
+      cardobjects: []
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -34,20 +36,25 @@ class App extends Component {
     })
   }
 
-  callapi() {
-    var data = "grant_type=authorization_code&client_id=039bb643-891d-4abd-846d-a38c2e89adad&redirect_uri=https://test-scgdistpurchasing.nexterdigitals-dev.com/login&code=5zD0G9GbxEm2B9LRWX-_mA.fVlbsXz41wieGH39YWrB-NIDTcY.mbOVy93sAGq8cnJI4pjFjxlIJqrCt3d9Ee-jA5uKgP9mg1gzKqoU3adxxdm7V5f97g5AiAdVbOw2I7xizJuL0bZkYFDCexJbUsIbqWsTsZlOeVp_BEDYmhUR_KmtIQBh5OZeMiaA5hNn5ZOm_98LAtyRKNoOoccO6pJ8wb2TDjtYM-xGmZ0JIKynlwPqh4CT4rYLcC3AX5QkPKYm9Wc-7zpDq5Rh8ZBaG3Hv0NK-g2XEvI2OKGVY0MnI3tJeVQKdEpHySq8KL5DF3wLNwNvVXt2YaJS02V3T7WJx4agWpiFrb85UazoDcISHVYOfP68RJHfTGst4FgD15pucSYkWtA"
-    //axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
-    const headers = {
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      method: 'HEAD',
-      mode: 'no-cors',
-    }
-    axios.post(`https://accessdev.scg.co.th/adfs/oauth2/token`, { data }, headers)
+  componentDidMount() {
+    this.callapi();
+  }
+
+  async callapi() {
+    let cardobjects = await axios.get(`https://us-central1-npbackendtest.cloudfunctions.net/app/api/cardlist`)
       .then(res => {
-        console.log(res);
+        
+        console.log(res,"apicalled");
+        return res.data.data;
       })
+
+      this.setState({
+        cardobjects : cardobjects
+      },() => {
+        console.log(this.state.cardobjects, "data");
+      });
+
+      
   }
 
   async handleClick() {
@@ -164,7 +171,7 @@ class App extends Component {
                   <i className="fa fa-github"></i>
                 </a>
                 <a href="https://medium.com/@nanpipat.k" target="_blank">
-                  <i class="fab fa-medium"></i>
+                  <i className="fab fa-medium"></i>
                 </a>
                 <a href="mailto:nanpipat.k@gmail.com" target="_blank">
                   <i className="fa fa-envelope"></i>
@@ -212,36 +219,6 @@ class App extends Component {
 
           <hr className="m-0" />
 
-          {/* <section className="resume-section p-3 p-lg-5 d-flex align-items-center" id="education">
-            <div className="w-100">
-              <h2 className="mb-5">Education</h2>
-
-              <div className="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-                <div className="resume-content">
-                  <h3 className="mb-0">Srinakarinwirot University</h3>
-                  <div className="subheading mb-3">College of social communication innovation</div>
-                  <div>Computer For Communication</div>
-                </div>
-                <div className="resume-date text-md-right">
-                  <span style={{ color: "#97e8cf" }}>August 2014 - May 2018</span>
-                </div>
-              </div>
-
-              <div className="resume-item d-flex flex-column flex-md-row justify-content-between">
-                <div className="resume-content">
-                  <h3 className="mb-0">Debsirin Samutprakarn</h3>
-                  <div className="subheading mb-3">Eng - Math Program</div>
-                </div>
-                <div className="resume-date text-md-right">
-                  <span style={{ color: "#97e8cf" }}>May 2008 - Feb 2013</span>
-                </div>
-              </div>
-
-            </div>
-          </section>
-
-          <hr className="m-0" /> */}
-
           <section className="resume-section p-3 p-lg-5 d-flex align-items-center" id="skills">
             <div className="w-100">
               <h2 className="mb-5">Skills</h2>
@@ -272,12 +249,7 @@ class App extends Component {
                   <p>Advanced Level. It's main back-end language for me. I have more than 2 years experience with it.</p>
                   <div className="subheading mt-3"><img className="mr-3" style={{ borderRadius: "50%", width: "70px" }} src="https://www.blognone.com/sites/default/files/externals/723c801c90afd9aa844b3ce3d7f01f0b.png" alt="" />Node.js (Express.js)</div>
                   <p>Basic Level. I used it when I was in college and sometimes use it in freelance jobs. </p>
-                  {/* <div className="subheading mt-3">HTML & CSS</div>
-                  <p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
-                  <div className="subheading mt-3">Bootstrap</div>
-                  <p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
-                  <div className="subheading mt-3">Material ui</div>
-                  <p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p> */}
+                 
                 </div>
               </div>
 
@@ -288,12 +260,7 @@ class App extends Component {
                   <p>Basic Level. I use it in my freetimes. And it is in the learning phase</p>
                   <div className="subheading mt-3"><img className="mr-3" style={{ borderRadius: "50%", width: "70px" }} src="https://secure.meetupstatic.com/photos/event/d/a/3/7/600_477715863.jpeg" alt="" />IONIC </div>
                   <p>Basic Level. I used to help a friend to fix bugs with this.</p>
-                  {/* <div className="subheading mt-3">HTML & CSS</div>
-                  <p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
-                  <div className="subheading mt-3">Bootstrap</div>
-                  <p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
-                  <div className="subheading mt-3">Material ui</div>
-                  <p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p> */}
+                 
                 </div>
               </div>
 
@@ -304,12 +271,7 @@ class App extends Component {
                   <p>Basic Level. It's main DB i used. </p>
                   <div className="subheading mt-3"><img className="mr-3" style={{ borderRadius: "50%", width: "70px" }} src="https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_502,h_518/https://keytotech.com/wp-content/uploads/2019/05/firebase.png" alt="" />Firebase (with Clound Functions)</div>
                   <p>Mid Level. I mostly use it for my freelance job and in my own projects.</p>
-                  {/* <div className="subheading mt-3">HTML & CSS</div>
-                  <p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
-                  <div className="subheading mt-3">Bootstrap</div>
-                  <p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
-                  <div className="subheading mt-3">Material ui</div>
-                  <p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p> */}
+              
                 </div>
               </div>
 
@@ -322,61 +284,10 @@ class App extends Component {
                   <p>Basic Level. I use to write pipeline for pre-deploy my application.</p>
                   <div className="subheading mt-3"><img className="mr-3" style={{ borderRadius: "50%", width: "70px" }} src="https://pbs.twimg.com/profile_images/378800000036582527/5aa73901ac270ac6e8776241b04ad3d9_400x400.png" alt="" />Octopus Deploy</div>
                   <p>Basic Level. I use it to deploy project in my company server.</p>
-                  {/* <div className="subheading mt-3">HTML & CSS</div>
-                  <p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
-                  <div className="subheading mt-3">Bootstrap</div>
-                  <p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
-                  <div className="subheading mt-3">Material ui</div>
-                  <p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p> */}
+ 
                 </div>
               </div>
-
-
-
-
-
-              {/* <div className="subheading mb-3">Programming Languages &amp; Tools</div>
-              <ul className="list-inline dev-icons">
-                <li className="list-inline-item">
-                <img style={{borderRadius: "50%", width: "70px"}} src={ require('./assets/img/cs.png') } alt="" />
-                 
-                </li>
-                <li className="list-inline-item">
-                <img style={{borderRadius: "50%", width: "70px"}} src={ require('./assets/img/ra.png') } alt="" />
-                 
-                </li>
-                <li className="list-inline-item">
-                  <img style={{borderRadius: "50%", width: "70px"}} src={ require('./assets/img/al.png') } alt="" />
-               
-                </li>
-                <li className="list-inline-item">
-                <img style={{borderRadius: "50%", width: "70px"}} src={ require('./assets/img/js.png') } alt="" />
-                  
-                </li>
-                <li className="list-inline-item">
-                  <img style={{borderRadius: "50%", width: "70px"}} src={ require('./assets/img/sql.png') } alt="" />
-                  
-                </li>
-              </ul>
-
-              <div className="subheading mb-3">Workflow</div>
-              <ul className="fa-ul mb-0">
-                <li>
-                  <i className="fa-li fa fa-check"></i>
-                  Mobile-First, Responsive Design</li>
-                <li>
-                  <i className="fa-li fa fa-check"></i>
-                  Cross Browser Testing &amp; Debugging</li>
-                <li>
-                  <i className="fa-li fa fa-check"></i>
-                  Cross Functional Teams</li>
-                <li>
-                  <i className="fa-li fa fa-check"></i>
-                  Agile Development &amp; Scrum</li>
-              </ul>
-              <br />
-              <br />
-              <CardSkill /> */}
+             
             </div>
           </section>
 
@@ -387,144 +298,18 @@ class App extends Component {
               <h2 className="mb-5">PROJECTS</h2>
               <div className="row">
                 <CardColumns>
-                  <CardCom
-                    imgurl={"https://bgstrategicadvisors.com/wp-content/uploads/2019/09/medium.png"}
-                    title="Medium"
-                    subtitle=" "
-                    text="my blog in medium.com. i do in freetimes"
-                    Link1D="Go to My Blog"
-                    Link1="https://medium.com/@nanpipat.k"
+                  {this.state.cardobjects.map(x => {
+                    return <CardCom
+                    imgurl={x.imgurl}
+                    title={x.title}
+                    subtitle={x.subtitle}
+                    text={x.text}
+                    Link1D={x.Link1D}
+                    Link1={x.Link1}
+                    Link2D={x.Link2D}
+                    Link2={x.Link2}
                   />
-
-                  <CardCom
-                    imgurl={"https://www.inovex.de/blog/wp-content/uploads/2018/03/react-native.png"}
-                    title="React Native Simple App"
-                    subtitle=" "
-                    text="Simple Social Application"
-                    Link1D="Screenshot"
-                    Link1="https://www.img.in.th/images/597edebe6fbf981bd7ebcaa12955a0fe.png"
-                    Link2D="Code"
-                    Link2="https://github.com/nanpipat/react-native-socialapp"
-                  />
-
-                  <CardCom
-                    imgurl={"https://miro.medium.com/max/1024/1*TaV-QaLWD_aScEPrgLKZfA.png"}
-                    title="React on Heroku"
-                    subtitle=" "
-                    text="Config and Setting of ReactJs for deploy to Heroku"
-                    Link1D="Demo"
-                    Link1="https://nanpipat-react-deploy.herokuapp.com/"
-                    Link2D="Code"
-                    Link2="https://github.com/nanpipat/heroku_react_deploy"
-                  />
-
-                  <CardCom
-                    imgurl={"https://i.ytimg.com/vi/zXx2oBrxN9E/maxresdefault.jpg"}
-                    title="Angular OAuth2"
-                    subtitle=" "
-                    text="Setting and config for OAuth2 Angular Project"
-                    Link1D="Demo"
-                    Link1="https://nanpipat-angular-oauth2-demo.herokuapp.com/home"
-                    Link2D="Code"
-                    Link2="https://github.com/nanpipat/angular-oauth2-demo"
-                  />
-
-                  <CardCom
-                    imgurl={"https://miro.medium.com/max/900/1*PoTNHIvshJw8hP_yWpbY6g.png"}
-                    title="Upload and Take picture with webcam"
-                    subtitle=" "
-                    text="Upload file and take webcam simple project"
-                    Link1D="Demo"
-                    Link1="https://nanpipat.github.io/obdetection_front/"
-                    Link2D="Code"
-                    Link2="https://github.com/nanpipat/obdetection_front"
-                  />
-                  <CardCom
-                    imgurl={"https://neilpatel.com/wp-content/uploads/2018/10/blog.jpg"}
-                    title="Blog Page with NextJS"
-                    subtitle=" "
-                    text="Build Blog by NextJS"
-                    Link1D="Demo"
-                    Link1="https://nanpipat-blogger.herokuapp.com/"
-                    Link2D="Code"
-                    Link2="https://github.com/nanpipat/nextjsbuildblog"
-                  />
-
-                  <CardCom
-                    imgurl={"https://miro.medium.com/max/2400/1*jNM11lWgQid_djzb3668UQ.png"}
-                    title="Angular on Heroku"
-                    subtitle=" "
-                    text="Config and Setting of Angular for deploy to Heroku"
-                    Link1D="Demo"
-                    Link1="https://nanpipat-angular-deploy.herokuapp.com/"
-                    Link2D="Code"
-                    Link2="https://github.com/nanpipat/heroku_angular_deploy"
-                  />
-                  <CardCom
-                    imgurl={"https://miro.medium.com/max/1200/1*SrUAbDM2x3CJjWi4FQBE2w.png"}
-                    title="Nextjs on Heroku"
-                    subtitle=" "
-                    text="Config and Setting of NextJs for deploy to Heroku"
-                    Link1D="Demo"
-                    Link1="https://nanpipat-nextjs-deploy.herokuapp.com/"
-                    Link2D="Code"
-                    Link2="https://github.com/nanpipat/heroku_nextjs_deploy"
-                  />
-
-                  <CardCom
-                    imgurl={"https://firebase.google.com/images/social.png"}
-                    title="Firebase Login"
-                    subtitle=" "
-                    text="Login page example on with firebase."
-                    Link1D="Demo"
-                    Link1="https://nanpipat.github.io/Firebase_Loginapp/"
-                    Link2D="Code"
-                    Link2="https://github.com/nanpipat/Firebase_Loginapp"
-                  />
-                  <CardCom
-                    imgurl={"https://cerberus-laboratories.com/images/blog/random_numbers.jpg"}
-                    title="Random Number"
-                    subtitle=" "
-                    text="Random Number application on react."
-                    Link1D="Demo"
-                    Link1="https://nanpipat.github.io/ReactApp_NumberRandom/"
-                    Link2D="Code"
-                    Link2="https://github.com/nanpipat/ReactApp_NumberRandom"
-                  />
-                  <CardCom
-                    imgurl={"https://code.recuweb.com/c/u/3a09f4cf991c32bd735fa06db67889e5/2018/08/wordpress-photo-gallery-plugins1.png"}
-                    title="Images Gallery"
-                    subtitle=" "
-                    text="Images Gallery application on react."
-                    Link1D="Demo"
-                    Link1="https://nanpipat.github.io/ReactApp_ImgGallery/"
-                    Link2D="Code"
-                    Link2="https://github.com/nanpipat/ReactApp_ImgGallery"
-                  />
-                  <CardCom
-                    imgurl={"https://cdn.tutsplus.com/active/uploads/legacy/tuts/008_colorPicker/Tutorial/8.jpg"}
-                    title="Color Picker"
-                    subtitle=" "
-                    text="Color Picker on react."
-                    Link1D="Demo"
-                    Link1="https://nanpipat.github.io/ReactApp_ColorPicker/"
-                    Link2D="Code"
-                    Link2="https://github.com/nanpipat/ReactApp_ColorPicker"
-                  />
-
-                  {/* <CardCom
-                    imgurl= {reim}
-                    title="Card title3"
-                    subtitle=" "
-                    text="This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first"
-                  />
-                  <CardCom
-                    imgurl= {reim}
-                    title="Card title3"
-                    subtitle=" "
-                    text="This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the firstThis is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first
-                    This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first"
-                  /> */}
+                  })}
                 </CardColumns>
               </div>
             </div>
